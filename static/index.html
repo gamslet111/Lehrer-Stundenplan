@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lehrer-Suche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="block" aria-hidden="true"></span>Lehrer-Suche</div>
+    <span class="stand" id="stand">Lade …</span>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-ansicht="lehrer">Nach Lehrern</button>
+    <button class="tab" role="tab" data-ansicht="klasse">Nach Klasse</button>
+    <button class="tab" role="tab" data-ansicht="raum">Nach Raum</button>
+    <button class="tab" role="tab" data-ansicht="vertretung">Vertretungen</button>
+  </div>
+
+  <main>
+    <section class="panel" id="v-lehrer" role="tabpanel">
+      <h1 class="frage">Wann haben diese Lehrer Unterricht?</h1>
+      <form class="suche" id="suchform" autocomplete="off">
+        <input id="q" type="text" placeholder="Kürzel eingeben, z. B. HOAN oder WALT, TILL" aria-label="Lehrerkürzel">
+        <button class="btn" type="submit">Hinzufügen</button>
+        <button class="btn ghost" type="button" id="alleWeg">Alle entfernen</button>
+      </form>
+      <div class="chips" id="chips" aria-live="polite"></div>
+      <details class="lehrerliste" id="lehrerliste" open>
+        <summary>Alle Lehrer</summary>
+        <div class="alle" id="alleLehrer" aria-label="Alle Lehrer"></div>
+      </details>
+      <div id="l-aus">
+        <ul class="statusliste" id="l-status"></ul>
+        <div class="wochenleiste" id="l-woche"></div>
+        <div class="tagtabs" id="l-tage" role="tablist" aria-label="Tag auswählen"></div>
+        <div class="scroll"><div class="grid" id="l-grid"></div></div>
+      </div>
+      <p class="leer" id="l-leer">Wähle oben einen oder mehrere Lehrer aus. Du bekommst dann einen Stundenplan, der nur ihre Stunden enthält.</p>
+    </section>
+
+    <section class="panel" id="v-klasse" role="tabpanel" hidden>
+      <h1 class="frage"><span>Wer ist in</span><select class="pick" id="klasse" aria-label="Klasse auswählen"></select><span>?</span></h1>
+      <p class="status" id="k-status"></p>
+      <div class="wochenleiste" id="k-woche"></div>
+      <div class="tagtabs" id="k-tage" role="tablist" aria-label="Tag auswählen"></div>
+      <div class="scroll"><div class="grid" id="k-grid"></div></div>
+    </section>
+
+    <section class="panel" id="v-raum" role="tabpanel" hidden>
+      <h1 class="frage"><span>Was ist in</span><select class="pick" id="raum" aria-label="Raum auswählen"></select><span>?</span></h1>
+      <p class="status" id="r-status"></p>
+      <div class="wochenleiste" id="r-woche"></div>
+      <div class="tagtabs" id="r-tage" role="tablist" aria-label="Tag auswählen"></div>
+      <div class="scroll"><div class="grid" id="r-grid"></div></div>
+    </section>
+
+    <section class="panel" id="v-vertretung" role="tabpanel" hidden>
+      <h1 class="frage">Was ändert sich?</h1>
+      <div class="suche"><input id="vfilter" type="search" placeholder="Filtern nach Klasse, Lehrer, Raum …" autocomplete="off"></div>
+      <div id="vliste"></div>
+    </section>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
